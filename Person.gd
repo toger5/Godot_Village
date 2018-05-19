@@ -12,6 +12,7 @@ var is_busy = false
 var state = PersonState.idle
 
 func _ready():
+	var itIs = 19
 	print("person joined")
 	# Called every time the node is added to the scene.
 	# Initialization here

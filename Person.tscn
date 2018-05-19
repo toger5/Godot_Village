@@ -4,6 +4,8 @@
 
 [sub_resource type="CapsuleMesh" id=1]
 
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
 radius = 1.0
 mid_height = 1.0
 radial_segments = 64
@@ -15,7 +17,6 @@ radius = 1.0
 height = 1.0
 
 [node name="Person" type="KinematicBody" index="0"]
-
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -31,7 +32,6 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Axis Lock" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
-
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 layers = 1
 material_override = null
@@ -48,10 +48,41 @@ material/0 = null
 _sections_unfolded = [ "Geometry", "Transform", "Visibility" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
-
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
+[node name="CSGCombiner" type="CSGCombiner" parent="." index="2"]
+visible = false
+layers = 1
+operation = 0
+use_collision = false
+snap = 0.001
+
+[node name="CSGSphere" type="CSGSphere" parent="CSGCombiner" index="0"]
+transform = Transform( 1, 0, 0, 0, 1.50098, 0, 0, 0, 1, 0, 0, 0 )
+layers = 1
+operation = 0
+use_collision = false
+snap = 0.001
+invert_faces = false
+radius = 1.18509
+radial_segments = 32
+rings = 32
+smooth_faces = true
+material = null
+
+[node name="CSGSphere" type="CSGSphere" parent="CSGCombiner/CSGSphere" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.599078, 0, 0, 0, 1, 0, 0.331024, 0.582349 )
+layers = 1
+operation = 2
+use_collision = false
+snap = 0.001
+invert_faces = false
+radius = 0.741969
+radial_segments = 32
+rings = 32
+smooth_faces = true
+material = null
 
